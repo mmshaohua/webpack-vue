@@ -1,9 +1,9 @@
 // 存放 dev 和 prod 通用配置
 
 const path =require('path')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
     // 打包入口js文件
@@ -12,7 +12,7 @@ module.exports = {
     // 出口配置
     output: {
         // 若文件内容无变化，则 占位符 [name]_[hash] 不变
-        filename: 'js/[name].[hash].js',
+        filename: '[name].[hash].js',
         path: path.resolve(__dirname, '../dist')
     },
     module: {
@@ -65,19 +65,37 @@ module.exports = {
             }
         ]
     },
+    
+    resolve: {  // 配置别名
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': path.resolve(__dirname, '../src'),
+            '@api': path.resolve(__dirname, '../src/api'),
+            '@common': path.resolve(__dirname, '../src/common'),
+            '@components': path.resolve(__dirname, '../src/components'),
+            '@utils': path.resolve(__dirname, '../src/utils'),
+            '@views': path.resolve(__dirname, '../src/views'),
+        },
+
+        // 省略文件拓展名
+        extensions: ['.js', '.json', '.vue', '.scss', '.css']
+    },
+    
     plugins: [
         // 解决vender后面的hash每次都改变
         // new webapack.HashedModuleIdsPlugin()
-        new VueLoaderPlugin(),
-
+        
         new HtmlWebpackPlugin({
             template: './public/index.html',
+            filename: 'index.html'
         }),
-
+        
         new CopyWebpackPlugin([
             {
                 from: './public'
             }
         ]),
+        
+        new VueLoaderPlugin(),
     ]
 }
