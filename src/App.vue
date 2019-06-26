@@ -1,17 +1,16 @@
 <template>
     <div id="app">
         Hello, World
-        <One/>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import One from '@components/one/One'
 
 export default {
-    name: 'app',
+    name: 'App',
     components: {
-        One,
+        
     }
 }
 </script>
