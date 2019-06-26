@@ -6,7 +6,7 @@ $ `npm init -y`
 
 $ `npm init -y`
 $ `npm i @babel/core @babel/preset-env babel-loader html-webpack-plugin webpack webpack-dev-server  webpack-cli webpack-merge copy-webpack-plugin file-loader url-loader node-sass sass-loader style-loader postcss-loader css-loader vue-loader vue-style-loader vue-template-compiler @babel/plugin-syntax-dynamic-import -D`
-$ `npm i  vue vue-router vuex -S`
+$ `npm i  vue vue-router vuex vue-touch swiper mint-ui axios better-scroll core-js -S`
 
 3. 指令
 
